@@ -1,0 +1,22 @@
+extends layouts/layout
+
+block style
+    link(rel="stylesheet" href="/css/product.css")
+block content
+    main
+        if prods.length == 0
+            h1 No Products
+        else
+            .grid
+                each product in prods
+                    article.card.product-item
+                        header.card__header
+                            h1.product__title #{product.title}
+                        .card__image
+                            img(src="https://images.pexels.com/photos/448835/pexels-photo-448835.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="A Book")
+
+                        .card__content
+                            h2.product__price $19.99
+                            p.product__description A very interesting book about so many even more interesting things!
+                        .card__actions
+                            button.btn Add To Cart

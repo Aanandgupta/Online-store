@@ -1,0 +1,49 @@
+<%- include('../includes/head.ejs')%> 
+</head> 
+<body>
+    <%- include('../includes/nav.ejs') %>
+    <main>
+
+        <% if(prods.length>0){ %>
+        <table class="table">
+            <tr>
+                <th>Product</th>
+                <th>Qty.</th>
+                <th>Price</th>
+                <th>Controls</th>
+            </tr>
+
+            <% for(let products of prods) {%>
+                <tr>
+                    <td><%= products.title %></td>
+                    <td><%= products.qty %></td>
+                    <td><%= products.price %></td>
+                    <td>
+                        <form action="/cart-delete" method="POST">
+                            <button type="submit" class="delbtn"> Remove </button>
+                            <input type="hidden" name="prodId" value="<%= products.id %>" >
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        </form>
+                    </td>
+                </tr>
+            <% } %>
+
+            
+        </table>
+        
+        <div class="Total">
+            <h1>Total Price: &nbsp$</h1>
+            <h1><%= totalPrice %></h1>
+        </div>
+        <form action="/order" method="POST">
+            <button class="btn">CheckOut <i class="far fa-credit-card"></i></button>
+            <input type="hidden" value="true" name="Checkout">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        </form>
+
+        <%} else { %>
+            <h1>Nothing Here</h1>
+        <% } %>
+    </main>
+
+<%- include('../includes/end.ejs') %>

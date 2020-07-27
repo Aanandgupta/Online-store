@@ -1,0 +1,19 @@
+<div class="pagination">
+    <% if(currPage>1) {%>
+        <a href= "?page=<%= currPage-1 %>"  class="btn"><< Prev</a> 
+    <%} else {%>
+        <button disabled class="btn disabled"><< Prev</button>
+    <% } %> 
+    <a href="?page=1" class="<%= currPage==1 ? 'btn Page-Active': 'btn'%>" >1</a>
+    <% for(let i=prevPage;i<=nextPage;i++){ %>
+        
+        <a href="?page=<%= i %>" class="<%= currPage==i ? 'btn Page-Active': 'btn'%>" ><%= i %></a>
+    <% } %>
+
+    <% if(currPage < pages) {%>
+        <a href= "?page=<%= Number(currPage) +1 %>"  class="btn">Next >></a> 
+    <%} else {%>
+        <button disabled class="btn disabled">Next >></button>
+    <% } %> 
+
+</div>

@@ -1,0 +1,79 @@
+<header class="main-header">
+    <nav class="main-header__nav">
+        <div>
+            <ul class="main-header__item-list">
+                <li>
+                    <i style="font-size: 30px; margin-right: 10px;" class="icon-app icon fab fa-apple"></i>
+                </li>
+                <li class="main-header__item">
+                    <i class="fas fa-store icon"></i>
+                    <a href="/" class=<%= url === "/" ? "active" : "" %>>Shop</a>
+                </li>
+                <li class="main-header__item">
+                    <i class="fas fa-list icon"></i>
+                    <a href="/products" class=<%=  url === "/products" ? "active" : "" %>>Products</a>
+                </li>
+                <% if(isLoggedIn==true) {%>
+                <li class="main-header__item">
+                    <i class="fas fa-shopping-cart icon"></i>
+                    <a href="/cart" class=<%=  url === "/cart" ? "active" : "" %>>Cart</a>
+                </li>
+
+                <li class="main-header__item">
+                    <i class="fas fa-receipt icon   "></i>
+                    <a href="/order" class=<%=  url === "/order" ? "active" : "" %>>Orders</a>
+                </li>
+
+                <li class="main-header__item">
+
+                    <i class="fas fa-plus icon"></i>
+                    <a href="/admin/add-product" class=<%=  url === "/add-product" ? "active" : "" %>>Add Product</a>
+                </li>
+
+                <li class="main-header__item">
+                    <i class="fas fa-user-shield icon"></i>
+                    <a href="/admin/products" class=<%=  url === "/admin/products" ? "active" : "" %>>Admin Products</a>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+        <div class="main-header-div">
+            <ul class="main-header__item-list loggedOne">
+                <li class="main-header__item logged">
+
+                    <% if(isLoggedIn==true) {%>
+                    <a class="logged" style="cursor: pointer; color: white;">
+                        Hello, <%= userName %>
+                        <i style="font-size: 30px;color:white; margin-left: 10px;" class="fas fa-user-circle"></i>
+                    </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-list">
+                                <form method="POST" action="/logout">
+                                    <button class="logoutbtn">Logout</button>
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                </form> 
+                            </div>
+
+                            <div class="dropdown-menu-list">
+                                <form method="POST" action="#">
+                                    <button class="logoutbtn">User Profile</button>
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                </form>
+                            </div>
+                        </div>
+                    </a>    
+                    <% } else {%>
+                    <a href="/login" class=<%=  url === "/login" ? "active" : "" %>>Login</a>
+                    <% } %>
+                </li>
+
+
+                <% if(isLoggedIn!=true) {%>
+                <li class="main-header__item logged">
+                    <a href="/signup" class=<%=  url === "/signup" ? "active" : "" %>>Signup</a>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+    </nav>
+</header>

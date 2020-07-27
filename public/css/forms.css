@@ -1,0 +1,58 @@
+.form-control {
+    margin: 1rem 0;
+}
+
+.form-control label,
+.form-control input {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.frgtpass{
+    color: #00695c;
+    margin-left: 10px;
+    text-decoration: none;
+
+
+}
+
+.frgtpass:hover{
+    text-decoration: underline;
+}
+
+.frgtpass::after{
+    content: '?';
+}
+
+.errorBox{
+    display: inline-block;
+    width: 350px;
+    padding:0 5px;
+    border-radius: 10px;
+    border: 2px solid red;
+    font-weight: 100;
+    color: red;
+    text-align: center;
+    background-color: rgb(238, 202, 196);
+    font-size: 13px;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    
+}
+.form-control textarea{
+    min-width: 100%;
+    min-height: 100px;
+    padding: 2px;
+}
+.form-control input {
+    border: 1px solid #a1a1a1;
+    font: inherit;
+    border-radius: 2px;
+}
+
+.form-control input:focus {
+    outline-color: #00695c;
+}

@@ -1,0 +1,56 @@
+<%- include('../includes/head.ejs')%>
+<link rel="stylesheet" href="/css/order.css">
+</head>
+
+<body>
+    <%- include('../includes/nav.ejs') %>
+    <main>
+
+        <% if(orders.length==0) { %>
+        <h1>Nothing There</h1>
+        <%} else { %>
+        <% let count=1 %>
+        <% for(let order of orders) {%>
+        <div class="order-card">
+            <ul>
+                <h1>Order <%=count%></h1>
+            </ul>
+            <div class="order-list">
+                <table>
+                    <tr>
+                        <th>Product</th>
+                        <th>Qty.</th>
+                        <th>Price Per Unit</th>
+                    </tr>
+
+                    <% for(let prods of order.products) {%>
+                    <tr>
+                        <td class="product-name">
+
+                            <%=prods.title%>
+
+                        </td>
+
+                        <td>
+                            <%= prods.qty%>
+                        </td>
+                        <td>
+                            <%= prods.price%>
+                        </td>
+                    </tr>
+                    <% } %>
+
+                </table>
+            </div>
+            <div class="amount-pane">
+            <h1>Amount Paid = $<%= order.totalPrice %></h1>
+        </div>
+            <a class="btn" href="order/<%= order.id %>">Download Invoice <i class="fas fa-arrow-down"></i></a>
+            
+        </div>
+        <% count=count+1 %>
+        <% } %>
+        <% } %>
+    </main>
+
+    <%- include('../includes/end.ejs') %>
